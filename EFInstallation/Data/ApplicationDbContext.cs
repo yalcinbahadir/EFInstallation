@@ -23,6 +23,7 @@ namespace EFInstallation.Data
         //For Fluent API
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+         
             //Model-wide configuration
             modelBuilder.HasDefaultSchema("TestSolutionDb");
             //Entity configuration

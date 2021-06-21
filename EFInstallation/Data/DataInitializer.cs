@@ -27,18 +27,12 @@ namespace EFInstallation.Data
         };
         public static void InitializeDatabase()
         {
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ApplicationDbContext>());           
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ApplicationDbContext>());
         }
         public static void SeedData()
         {
-            using (ApplicationDbContext context=new ApplicationDbContext())
+            using (ApplicationDbContext context = new ApplicationDbContext())
             {
-                if (!context.Database.Exists())
-                {
-                    Console.WriteLine(" Database does not exist.");
-                    context.Database.Initialize(true);
-                    Console.WriteLine(" Database initialized.");
-                }
 
                 if (!context.Departments.Any())
                 {
@@ -46,12 +40,15 @@ namespace EFInstallation.Data
                     context.SaveChanges();
                 }
 
+            }
+
+            using (ApplicationDbContext context = new ApplicationDbContext())
+            {
                 if (!context.Employees.Any())
                 {
                     context.Employees.AddRange(employees);
                     context.SaveChanges();
                 }
-                
             }
         }
     }
